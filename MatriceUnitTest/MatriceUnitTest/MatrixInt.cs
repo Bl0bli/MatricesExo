@@ -1,3 +1,4 @@
+using System;
 using MatriceUnitTest;
 
 namespace Maths_Matrices.Tests
@@ -8,7 +9,7 @@ namespace Maths_Matrices.Tests
         public int NbColumns;
         public int[,] Matrix; //Tableau a 2 dimensions, équivaut à écrire int[][]
 
-        #region Constructor
+        #region Constructor / Deconstructor
 
         public MatrixInt(int m, int n)
         {
@@ -29,6 +30,29 @@ namespace Maths_Matrices.Tests
             NbLines = matrix.NbLines;
             NbColumns = matrix.NbColumns;
             CopyMatrix(matrix.Matrix);
+        }
+
+        public (MatrixInt matrixA, MatrixInt matrixB) Split(int index)
+        {
+            int columnIndex = index+ 1;
+            if (columnIndex > NbColumns || columnIndex < 0) throw new ArgumentOutOfRangeException();
+            
+            MatrixInt matrixA = new MatrixInt(NbLines, columnIndex);
+            MatrixInt matrixB = new MatrixInt(NbLines, NbColumns - columnIndex);
+            
+            for(int i = 0; i < NbLines; i++)
+            for (int j = 0; j < NbColumns; j++)
+            {
+                if (j < columnIndex)
+                {
+                    matrixA[i, j] = Matrix[i, j];
+                }
+                else
+                {
+                    matrixB[i, j - columnIndex] = Matrix[i, j];
+                }
+            }
+            return (matrixA, matrixB);
         }
 
         #endregion
@@ -76,6 +100,23 @@ namespace Maths_Matrices.Tests
             return matrix.Transpose();
         }
 
+        public static MatrixInt GenerateAugmentedMatrix(MatrixInt m1, MatrixInt m2)
+        {
+            int nbColumns = m1.NbColumns + m2.NbColumns;
+            MatrixInt newMatrix = new MatrixInt(m1.NbLines , nbColumns);
+
+            for (int i = 0; i < m1.NbLines; i++)
+                for (int j = 0; j < nbColumns; j++)
+                {
+                    if(j > m1.NbColumns - 1)
+                        newMatrix[i, j] = m2[i, 0];
+                    
+                    else newMatrix[i, j] = m1[i, j];
+                }
+
+            return newMatrix;
+        }
+        
         public MatrixInt Transpose()
         {
             MatrixInt matrix = new MatrixInt(NbColumns, NbLines);
