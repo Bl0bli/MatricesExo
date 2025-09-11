@@ -1,0 +1,9 @@
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\bin\Debug\MatriceUnitTest.dll
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\bin\Debug\MatriceUnitTest.pdb
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\bin\Debug\nunit.framework.dll
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\bin\Debug\nunit.framework.xml
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\obj\Debug\MatriceUnitTest.csproj.AssemblyReference.cache
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\obj\Debug\MatriceUnitTest.csproj.CoreCompileInputs.cache
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\obj\Debug\MatriceU.8E846365.Up2Date
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\obj\Debug\MatriceUnitTest.dll
+C:\Users\smart\Desktop\A4_Matrices\MatriceUnitTest\MatriceUnitTest\obj\Debug\MatriceUnitTest.pdb
