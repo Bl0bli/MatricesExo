@@ -44,6 +44,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="MatrixFloat.cs" />
+        <Compile Include="MatrixInvertException.cs" />
         <Compile Include="MatrixRowReductionAlgorithm.cs" />
         <Compile Include="MatrixScalarZeroException.cs" />
         <Compile Include="MatrixElementaryOperations.cs" />
@@ -62,6 +63,7 @@
         <Compile Include="Tests08_ElementaryOperations.cs" />
         <Compile Include="Tests09_AugmentedMatricesAndSplit.cs" />
         <Compile Include="Tests10_RowReduction.cs" />
+        <Compile Include="Tests11_InvertMatricesUsingRowReduction.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
