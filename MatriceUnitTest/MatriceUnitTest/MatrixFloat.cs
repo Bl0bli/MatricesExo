@@ -86,6 +86,51 @@ namespace Maths_Matrices.Tests
             return (matrixA, matrixB);
         }
 
+        public static float Determinant(MatrixFloat matrix)
+        {
+            int sign = 1;
+            float determinant = 0;
+            for (int i = 0; i < matrix.NbColumns; i++)
+            {
+                MatrixFloat m = new MatrixFloat(matrix.Matrix);
+                int j = i;
+                while (m.NbColumns != 2)
+                {
+                    m = m.SubMatrix(0, j);
+                    j++;
+                }
+                determinant += sign * matrix.Matrix[0, i] * ((m.Matrix[0, 0] * m.Matrix[1,1]) - (m.Matrix[1, 0] * m.Matrix[0, 1]));
+                sign = -sign;
+
+                if (matrix.NbColumns == 2) break;
+            }
+            return determinant;
+        }
+
+        public MatrixFloat SubMatrix(int lineIndex, int columnIndex)
+        {
+            MatrixFloat matrixA = new MatrixFloat(NbLines - 1, NbColumns - 1);
+            for (int i = 0, k = 0; i < NbLines; i++)
+            {
+                if (i == lineIndex) continue;
+
+                for (int j = 0, l = 0; j < NbColumns; j++)
+                {
+                    if (j == columnIndex) continue;
+                    matrixA[k, l] = Matrix[i, j];
+                    l++;
+                }
+
+                k++;
+            }
+            return matrixA;
+        }
+
+        public static MatrixFloat SubMatrix(MatrixFloat m, int lineIndex, int columnIndex)
+        {
+            return m.SubMatrix(lineIndex, columnIndex);
+        }
+
         public static MatrixFloat Identity(int size)
         {
             float[,] matrix = new float[size, size];
