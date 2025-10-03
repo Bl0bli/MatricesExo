@@ -15,5 +15,10 @@
     &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests09_AugmentedMatricesAndSplit&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests10_RowReduction&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests11_InvertMatricesUsingRowReduction&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests12_SubMatrices&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests13_Determinants&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests14_AdjugateMatrices&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests15_InvertMatricesUsingDeterminant&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7A7C4479-89E2-4916-8BE0-CC71927B095C::.NETFramework,Version=v4.8::Maths_Matrices.Tests.Tests16_TransformationMatrices.TestTranslatePoint&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -88,25 +88,43 @@ namespace Maths_Matrices.Tests
 
         public static float Determinant(MatrixFloat matrix)
         {
+            if(matrix.NbColumns != matrix.NbLines) throw new ArgumentException();
+            if (matrix.NbColumns == 2)
+            {
+                return matrix.Matrix[0, 0] * matrix.Matrix[1, 1] - matrix.Matrix[1, 0] * matrix.Matrix[0, 1];
+            }
+            if (matrix.NbColumns == 1) return matrix[0, 0];
+
+            float det = 0;
             int sign = 1;
-            float determinant = 0;
             for (int i = 0; i < matrix.NbColumns; i++)
             {
-                MatrixFloat m = new MatrixFloat(matrix.Matrix);
-                int j = i;
-                while (m.NbColumns != 2)
-                {
-                    m = m.SubMatrix(0, j);
-                    j++;
-                }
-                determinant += sign * matrix.Matrix[0, i] * ((m.Matrix[0, 0] * m.Matrix[1,1]) - (m.Matrix[1, 0] * m.Matrix[0, 1]));
-                sign = -sign;
-
-                if (matrix.NbColumns == 2) break;
+                if(matrix[0, i] == 0) continue;
+                MatrixFloat subMatrix = matrix.SubMatrix(0, i);
+                det += sign * matrix.Matrix[0, i] * Determinant(subMatrix);
+                sign *= -1;
             }
-            return determinant;
+            return det;
         }
 
+        public MatrixFloat InvertByDeterminant()
+        {
+            MatrixFloat matrix = new MatrixFloat(NbLines, NbColumns);
+            float determinant = Determinant(this);
+            
+            if(determinant == 0) throw new MatrixInvertException();
+            
+            float factor = 1 / determinant;
+            matrix = Adjugate();
+            matrix *= factor;
+            return matrix;
+        }
+
+        public static MatrixFloat InvertByDeterminant(MatrixFloat matrix)
+        {
+            return matrix.InvertByDeterminant();
+        }
+        
         public MatrixFloat SubMatrix(int lineIndex, int columnIndex)
         {
             MatrixFloat matrixA = new MatrixFloat(NbLines - 1, NbColumns - 1);
@@ -124,6 +142,42 @@ namespace Maths_Matrices.Tests
                 k++;
             }
             return matrixA;
+        }
+
+        public MatrixFloat Transpose()
+        {
+            MatrixFloat matrix = new MatrixFloat(NbColumns, NbLines);
+            for(int i = 0; i < NbColumns; i++)
+            for(int j = 0; j < NbLines; j++)
+                matrix.Matrix[i,j] = Matrix[j,i];
+            
+            return matrix;
+        }
+        public static MatrixFloat Transpose(MatrixFloat matrix)
+        {
+            return matrix.Transpose();
+        }
+        public MatrixFloat Adjugate()
+        {
+            MatrixFloat matrix = new MatrixFloat(NbLines,NbColumns);
+
+            int sign = 1;
+            for (int i = 0; i < NbLines; i++)
+            {
+                for (int j = 0; j < NbColumns; j++)
+                {
+                    MatrixFloat subMatrix = SubMatrix(i, j);
+                    sign = (i+j)%2 == 0 ? 1: -1;
+                    matrix.Matrix[i, j] = sign * Determinant(subMatrix);
+                }
+            }
+            
+            return matrix.Transpose();
+        }
+
+        public static MatrixFloat Adjugate(MatrixFloat matrix)
+        {
+            return matrix.Adjugate();
         }
 
         public static MatrixFloat SubMatrix(MatrixFloat m, int lineIndex, int columnIndex)
@@ -227,6 +281,15 @@ namespace Maths_Matrices.Tests
             return Multiply(a,factor);
         }
         public static MatrixFloat operator *(int factor, MatrixFloat a)
+        {
+            return Multiply(a,factor);
+        }
+        
+        public static MatrixFloat operator *(MatrixFloat a, float factor)
+        {
+            return Multiply(a,factor);
+        }
+        public static MatrixFloat operator *(float factor, MatrixFloat a)
         {
             return Multiply(a,factor);
         }
